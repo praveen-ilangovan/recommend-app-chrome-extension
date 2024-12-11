@@ -1,0 +1,22 @@
+html{
+    min-height:300px;
+    min-width:500px;
+    background-color: #ffab24;
+    color:whitesmoke;
+}
+
+.button {
+    background-color: rgba(255, 255, 255,0);
+    color: whitesmoke;
+    border:none; 
+    border-radius:20px; 
+    border:solid 2px whitesmoke;
+    padding:10px;
+    min-height:15px; 
+    min-width: 100px;
+}
+
+.button:hover {
+    background-color:#002ead;
+    transition: 0.7s;
+}
