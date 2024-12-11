@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+    // Attach an eventListener to the login button
+    const loginButton = document.getElementById("loginButton");
+    loginButton.addEventListener('click', login);
     
     // Attach an eventListener to the button
     const getUrlButton = document.getElementById("getUrlButton");
@@ -36,3 +40,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
     });
 });
+
+
+const login = async () => {
+    const endpoint = "http://127.0.0.1:8000/cards/67519a936f2b63ddc7239bab?show_page=false";
+
+    try {
+        const response = await fetch(endpoint);
+    
+        if (response.ok) {
+          // Fill the form
+          const card = await response.json();
+    
+        //   document.getElementById("url").value = card["url"];
+          document.getElementById("titleField").value = card["title"];
+          document.getElementById("descriptionField").value = card["description"];
+          document.getElementById("thumbnailField").value = card["thumbnail"];
+        } else {
+          // Handle error
+          const errorData = await response.json();
+          alert(`Error: ${errorData.detail.error}`);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again.");
+      }
+}

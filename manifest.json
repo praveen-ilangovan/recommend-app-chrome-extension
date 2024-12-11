@@ -22,5 +22,6 @@
         "matches": ["<all_urls>"],
         "js": ["contents/content.js"],
         "run_at": "document_end"
-    }]
+    }],
+    "host_permissions": ["http://localhost/"]
 }
