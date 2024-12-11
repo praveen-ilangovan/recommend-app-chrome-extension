@@ -17,5 +17,10 @@
             "128": "icons/128.png",
             "512": "icons/512.png"
         }
-    }
+    },
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["contents/content.js"],
+        "run_at": "document_end"
+    }]
 }

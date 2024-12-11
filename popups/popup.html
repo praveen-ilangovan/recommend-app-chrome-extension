@@ -19,17 +19,27 @@
 
     <!-- Get current URL -->
     <div style="text-align: center;">
-        <button type="button" class="button"> Get URL </button>
+        <button type="button" class="button" id="getUrlButton"> Get URL </button>
     </div>
 
     <!-- Display the data -->
     <!-- Image Title & Description -->
+    <div>
+        <label for="titleField">Title:</label>
+        <input type="text" id="titleField" name="title">
+    </div>
+
+    <div>
+        <label for="descriptionField">Description:</label>
+        <textarea id="descriptionField" name="description"></textarea>
+    </div>
+
 
     <!-- Add -->
     <!-- <div style="text-align: center;">
         <button type="button" class="button"> Add </button>
     </div> -->
 
-
+    <script src="popup.js"></script>
 </body>
 </html>
