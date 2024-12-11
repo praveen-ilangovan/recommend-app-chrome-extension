@@ -3,6 +3,7 @@ html{
     min-width:500px;
     background-color: #ffab24;
     color:whitesmoke;
+    margin: 0px 10px;
 }
 
 .button {
@@ -14,9 +15,35 @@ html{
     padding:10px;
     min-height:15px; 
     min-width: 100px;
+    margin: 10px;
 }
 
 .button:hover {
     background-color:#002ead;
     transition: 0.7s;
+}
+
+.titleField {
+    margin: 10px 10px 2px;
+    padding: 5px;
+    min-width: 480px;
+}
+
+.descriptionField {
+    margin: 10px 10px 2px;
+    padding: 5px;
+    min-height: 50px;
+    min-width: 480px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img{
+    height:150px;
+    width:auto;
+    max-width:500px;
 }

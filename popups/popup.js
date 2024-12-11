@@ -19,8 +19,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     const titleField = document.getElementById("titleField");
                     titleField.value = response.data.title;
 
+                    const thumbnailField = document.getElementById("thumbnailField");
+                    thumbnailField.value = response.data.thumbnail;
+
                     const descriptionField = document.getElementById("descriptionField");
                     descriptionField.value = response.data.description;
+
+                    // Set the image
+                    const thumbnail = document.getElementById("thumbnail");
+                    thumbnail.src = response.data.thumbnail;
                 }
 
             });

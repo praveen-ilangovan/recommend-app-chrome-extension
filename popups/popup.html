@@ -23,22 +23,31 @@
     </div>
 
     <!-- Display the data -->
-    <!-- Image Title & Description -->
-    <div>
-        <label for="titleField">Title:</label>
-        <input type="text" id="titleField" name="title">
-    </div>
+    <div class="container">
+        <div>
+            <div class="image">
+                <img id="thumbnail" src="https://i.pinimg.com/564x/48/bf/c9/48bfc9ae0a10418849a3f50d57c08897.jpg">
+            </div>
+        </div>
+        <div>
+            <div>
+                <input class="titleField" type="text" id="titleField" name="title" placeholder="Title">
+            </div>
 
-    <div>
-        <label for="descriptionField">Description:</label>
-        <textarea id="descriptionField" name="description"></textarea>
+            <div>
+                <input class="titleField" type="text" id="thumbnailField" name="thumbnail" placeholder="Thumbnail">
+            </div>
+        
+            <div>
+                <textarea class="descriptionField" id="descriptionField" name="description" placeholder="Description"></textarea>
+            </div>
+        </div>
     </div>
-
 
     <!-- Add -->
-    <!-- <div style="text-align: center;">
+    <div style="text-align: center;">
         <button type="button" class="button"> Add </button>
-    </div> -->
+    </div>
 
     <script src="popup.js"></script>
 </body>
