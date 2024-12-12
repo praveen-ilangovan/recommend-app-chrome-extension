@@ -20,7 +20,7 @@
         <div style="clear: both;"></div>
     </section>
 
-    <section id="loginSection">
+    <section id="loginSection" style="display: none;">
         <div class="loginForm">
             <div>
                 <input class="loginFormInputField" type="text" id="usernameField" name="username" placeholder="Username or Email address">
@@ -34,13 +34,15 @@
         </div>
     </section>
 
-    <section id="cardSection">
-        <div class="loginForm">
+    <section id="cardSection" style="display: none;">
+        <div class="cardForm">
+            <img id="thumbnail" src="https://i.pinimg.com/564x/48/bf/c9/48bfc9ae0a10418849a3f50d57c08897.jpg">
+
             <div>
-                <input class="loginFormInputField" type="text" id="usernameField" name="username" placeholder="Title">
+                <input class="loginFormInputField" type="text" id="titleField" name="title" placeholder="Title">
             </div>
             <div>
-                <input class="loginFormInputField" type="password" id="passwordField" name="password" placeholder="Description">
+                <textarea class="cardTextAreaField" id="descriptionField" name="description" placeholder="Description"></textarea>
             </div>
             <div>
                 <button type="button" class="button" id="loginButton"> Add </button>
@@ -49,6 +51,12 @@
 
         <div style="text-align: center">
             <p>Not you?  <a id='logoutLink' href="">Sign in as different user</a></p>
+        </div>
+    </section>
+
+    <section id="errorSection" style="display: none;">
+        <div class="error-message">
+            <span class="error-text" id="errorMessage"></span>
         </div>
     </section>
 

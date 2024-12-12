@@ -1,4 +1,4 @@
-import { getAuthenticatedUser, login, logout } from "../app/auth.js";
+import { getVerifiedUser, login, logout } from "../app/auth.js";
 
 document.addEventListener("DOMContentLoaded", async function() {
 
@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", async function() {
 
         const result = await login(username, password);
         if (result) {
-            const authenticatedUser = await getAuthenticatedUser();
-            if (authenticatedUser) {
-                showCardSection(authenticatedUser);
+            const verifiedUser = await getVerifiedUser();
+            if (verifiedUser) {
+                showCardSection(verifiedUser);
             }
         }
     });
@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", async function() {
     });
 
     // Display the contents
-    const authenticatedUser = await getAuthenticatedUser();
-    if (authenticatedUser) {
-        showCardSection(authenticatedUser);
+    const verifiedUser = await getVerifiedUser();
+    if (verifiedUser) {
+        showCardSection(verifiedUser);
     } else {
         showLoginSection();
     }
@@ -34,19 +34,23 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 
 const showLoginSection = () => {
-    document.getElementById("loginSection").style.display = 'block';
     document.getElementById("cardSection").style.display = 'none';
 
+    document.getElementById("loginSection").style.display = 'block';
     document.getElementById("userGreeting").style.display = 'none';
     document.getElementById("userGreeting").value = '';
 }
 
-const showCardSection = (authenticatedUser) => {
+const showCardSection = (verifiedUser) => {
     document.getElementById("loginSection").style.display = 'none';
+    
     document.getElementById("cardSection").style.display = 'block';
-
     document.getElementById("userGreeting").style.display = 'block';
-    document.getElementById("userGreeting").innerText = 'Hi, ' + authenticatedUser.first_name;
+    document.getElementById("userGreeting").innerText = 'Hi, ' + verifiedUser.name;
+
+    getUrlInfo();
+
+    // boards
 }
 
 const getUrlInfo = () => {
@@ -62,11 +66,16 @@ const getUrlInfo = () => {
             }
 
             if (response) {
+                // Store the url in the session data
+                chrome.storage.session.set({
+                    cardThumbnail: response.data.thumbnail,
+                    cardURL: response.data.url,
+                    cardTitle: response.data.title,
+                    cardDescription: response.data.description
+                 });
+
                 const titleField = document.getElementById("titleField");
                 titleField.value = response.data.title;
-
-                const thumbnailField = document.getElementById("thumbnailField");
-                thumbnailField.value = response.data.thumbnail;
 
                 const descriptionField = document.getElementById("descriptionField");
                 descriptionField.value = response.data.description;

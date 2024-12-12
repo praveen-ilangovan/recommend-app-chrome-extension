@@ -10,13 +10,13 @@ const getAccessToken = async () => {
 
 
 // Get Authenticated User
-export const getAuthenticatedUser = async () => {
-    let authenticatedUser = undefined;
+export const getVerifiedUser = async () => {
+    let verifiedUser = undefined;
 
     // See if there is an access token
     const accessToken = await getAccessToken();
     if (accessToken === undefined) {
-        return authenticatedUser;
+        return verifiedUser;
     }
 
     // Call the endpoint of the app.
@@ -29,21 +29,27 @@ export const getAuthenticatedUser = async () => {
             });
 
         if (response.ok) {
-            authenticatedUser = await response.json();
-            
-            // Set the user information
-            chrome.storage.session.set({ userID: authenticatedUser.id });
-            chrome.storage.session.set({ userFirstName: authenticatedUser.first_name });
+            verifiedUser = await response.json();
+            console.log(verifiedUser.boards);
 
-            return authenticatedUser;
+            // Set the user information
+            chrome.storage.session.set({
+                userID: verifiedUser.id,
+                userFirstName: verifiedUser.name,
+                userBoards: verifiedUser.boards
+            });
+
+            return verifiedUser;
         } else {
             // Handle error
             const errorData = await response.json();
-            alert(`Error: ${errorData.detail.error}`);
+            console.error("Error:", errorData.detail.error);
+            logout();
+            return verifiedUser;
         }
         } catch (error) {
             console.error("Error:", error);
-            alert(error);
+            return verifiedUser;
         }
 }
 
@@ -74,6 +80,7 @@ export const login = async (username, password) => {
       } else {
         // Handle error
         const errorData = await response.json();
+        console.error("Error:", errorData.detail.error);
         alert(`Error: ${errorData.detail.error}`);
       }
     } catch (error) {
