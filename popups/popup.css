@@ -7,29 +7,40 @@ html{
     margin: 0px 10px;
 }
 
-.Login {
-    padding: 100px 0;
+.topBarDiv {
+    margin: 0px;
+}
+
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
+
+.loginForm {
+    padding: 80px 0;
     text-align: center;
 }
 
-.inputField {
+.loginFormInputField {
     border:none; 
     border-radius:10px; 
     border:solid 2px whitesmoke;
-    padding: 10px; 
+    margin: 5px;
+    padding: 5px 10px;
     width: 200px;
     height: 15px; 
-    margin: 10px;
 }
 
-.inputField:hover,
-.inputField:focus {
+.loginFormInputField:hover,
+.loginFormInputField:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   color: rgba(0, 0, 0, 0.65);
 }
 
-.inputField:active {
+.loginFormInputField:active {
     background-color: #F0F0F1;
     border-color: rgba(0, 0, 0, 0.15);
     box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
@@ -45,13 +56,13 @@ html{
     box-sizing: border-box;
   
     min-height:10px; 
-    min-width: 170px;
+    min-width: 150px;
 
     margin: 10px;
-    padding:10px;
+    padding:5px;
 
     font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
   
     color: rgba(0, 0, 0, 0.65);
@@ -140,16 +151,6 @@ img{
     resize: vertical;
 }
 
-.textbox {
-    margin: 0px;
-}
-
-.alignleft {
-	float: left;
-}
-.alignright {
-	float: right;
-}
 
 .boardPicker {
     border:none; 
