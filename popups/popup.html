@@ -10,21 +10,87 @@
     <link href="popup.css" rel="stylesheet" media="screen">
 
 </head>
-<body>
+<body>    
 
-    <!-- Heading -->
-    <div style="text-align: center;">
-        <h1>Recommend App</h1>
-    </div>
+    <section class="Heading">
+        <!-- <div style="text-align: left;">
+            <h1>Recommend</h1>
+        </div> -->
+
+        <div id="textbox">
+            <h3 class="alignleft">Recommend</h3>
+            <h3 class="alignright">Hi, Praveen</h3>
+        </div>
+        <div style="clear: both;"></div>
+    </section>
+
+    <section class="Login" style="display: none">
+        <div>
+            <div style="text-align: center;">
+                <input class="inputField" type="text" id="usernameField" name="username" placeholder="Username or Email address">
+            </div>
+            <div style="text-align: center;">
+                <input class="inputField" type="password" id="passwordField" name="password" placeholder="Password">
+            </div>
+            <div style="text-align: center;">
+                <button type="button" class="button" id="loginButton"> Login </button>
+            </div> 
+        </div>
+    </section>
+
+    <section class="AddCard">
+        <!-- <div class="UserInfo" style="text-align: center;">
+            <h1>Welcome, Praveen</h1>
+            <p>Not you?  <a href="">Sign in as different user</a></p>
+        </div> -->
+
+        <div class="CardInfo" style="text-align: center;">
+            <img id="thumbnail" src="https://i.pinimg.com/564x/48/bf/c9/48bfc9ae0a10418849a3f50d57c08897.jpg">
+
+            <!-- <div class="container">
+                <div class="image">
+                  <img src="https://i.pinimg.com/564x/59/32/29/593229739184504afd9507cc42a9cb86.jpg">
+                </div>
+                <div class="text">
+                  <input class="cardInputField" type="text" id="usernameField" name="username" placeholder="Image URL">
+                </div>
+            </div> -->
+
+            <input class="cardInputField" type="text" id="usernameField" name="username" placeholder="Title">
+            <!-- <input class="cardInputField" type="text" id="usernameField" name="username" placeholder="Image URL"> -->
+            <textarea class="cardTextAreaField" id="descriptionField" name="description" placeholder="Description"></textarea>
+
+            <!-- <select class="boardPicker" name="languages" id="lang">
+                <option value="select">Select a language</option>
+                <option value="javascript">JavaScript</option>
+                <option value="php">PHP</option>
+                <option value="java">Java</option>
+                <option value="golang">Golang</option>
+                <option value="python">Python</option>
+                <option value="c#">C#</option>
+                <option value="C++">C++</option>
+                <option value="erlang">Erlang</option>
+              </select> -->
+
+            <div style="text-align: center;">
+                <button type="button" class="button" id="loginButton"> Add </button>
+            </div> 
+
+            <div>
+                <p>Not you?  <a href="">Sign in as different user</a></p>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Get current URL -->
-    <div style="text-align: center;">
+    <!-- <div style="text-align: center;">
         <button type="button" class="button" id="getUrlButton"> Get URL </button>
         <button type="button" class="button" id="loginButton"> Login </button>
-    </div>
+    </div> -->
 
     <!-- Display the data -->
-    <div class="container">
+    <!-- <div class="container">
         <div>
             <div class="image">
                 <img id="thumbnail" src="https://i.pinimg.com/564x/48/bf/c9/48bfc9ae0a10418849a3f50d57c08897.jpg">
@@ -43,13 +109,13 @@
                 <textarea class="descriptionField" id="descriptionField" name="description" placeholder="Description"></textarea>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Add -->
-    <div style="text-align: center;">
+    <!-- <div style="text-align: center;">
         <button type="button" class="button" id="addButton"> Add </button>
-    </div>
+    </div> -->
 
-    <script src="popup.js"></script>
+    <!-- <script src="popup.js"></script> -->
 </body>
 </html>
