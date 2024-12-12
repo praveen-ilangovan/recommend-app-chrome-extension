@@ -23,13 +23,24 @@ document.addEventListener("DOMContentLoaded", async function() {
         showLoginSection();
     });
 
-    // Display the contents
-    const verifiedUser = await getVerifiedUser();
-    if (verifiedUser) {
-        showCardSection(verifiedUser);
-    } else {
-        showLoginSection();
-    }
+    // // Display the contents
+    // const verifiedUser = await getVerifiedUser();
+    // if (verifiedUser) {
+    //     showCardSection(verifiedUser);
+    // } else {
+    //     showLoginSection();
+    // }
+
+    showCardSection({
+        id: '1',
+        name: 'Praveen',
+        boards: [
+            {'id':'1', 'name':'New Board'},
+            {'id':'2', 'name':'My Public Board'},
+            {'id':'3', 'name':'Top 10 movies'},
+            {'id':'4', 'name':'Best books to read'},
+            {'id':'5', 'name':'Imdb all time top 250'}
+        ]});
 });
 
 
@@ -48,12 +59,13 @@ const showCardSection = (verifiedUser) => {
     document.getElementById("userGreeting").style.display = 'block';
     document.getElementById("userGreeting").innerText = 'Hi, ' + verifiedUser.name;
 
-    getUrlInfo();
+    // populateUrlInfo();
 
     // boards
+    populateBoards(verifiedUser.boards);
 }
 
-const getUrlInfo = () => {
+const populateUrlInfo = () => {
     // Get the active tab
     chrome.tabs.query({active: true, currentWindow: true}, tabs => {
 
@@ -89,3 +101,22 @@ const getUrlInfo = () => {
 
     });
 };
+
+const populateBoards = (boards) => {
+    removeBoards();
+    const boardsDropDown = document.getElementById("boardsDropDown");
+    for (const board of boards) {
+        const option = document.createElement("option");
+        option.value = board.id;
+        option.text = board.name;
+        boardsDropDown.add(option);
+    }
+}
+
+const removeBoards = () => {
+    const boardsDropDown = document.getElementById("boardsDropDown");
+    const numOfOptions = boardsDropDown.options.length;
+    for (let i=numOfOptions-1; i >= 0 ; i--) {
+        boardsDropDown.remove(i);
+    }
+}
