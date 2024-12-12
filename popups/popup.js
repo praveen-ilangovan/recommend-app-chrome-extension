@@ -23,24 +23,13 @@ document.addEventListener("DOMContentLoaded", async function() {
         showLoginSection();
     });
 
-    // // Display the contents
-    // const verifiedUser = await getVerifiedUser();
-    // if (verifiedUser) {
-    //     showCardSection(verifiedUser);
-    // } else {
-    //     showLoginSection();
-    // }
-
-    showCardSection({
-        id: '1',
-        name: 'Praveen',
-        boards: [
-            {'id':'1', 'name':'New Board'},
-            {'id':'2', 'name':'My Public Board'},
-            {'id':'3', 'name':'Top 10 movies'},
-            {'id':'4', 'name':'Best books to read'},
-            {'id':'5', 'name':'Imdb all time top 250'}
-        ]});
+    // Display the contents
+    const verifiedUser = await getVerifiedUser();
+    if (verifiedUser) {
+        showCardSection(verifiedUser);
+    } else {
+        showLoginSection();
+    }
 });
 
 
@@ -59,9 +48,7 @@ const showCardSection = (verifiedUser) => {
     document.getElementById("userGreeting").style.display = 'block';
     document.getElementById("userGreeting").innerText = 'Hi, ' + verifiedUser.name;
 
-    // populateUrlInfo();
-
-    // boards
+    populateUrlInfo();
     populateBoards(verifiedUser.boards);
 }
 

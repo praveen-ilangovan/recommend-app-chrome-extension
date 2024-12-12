@@ -1,6 +1,6 @@
 
 // Constants
-const AUTH_ENDPOINT = "http://127.0.0.1:8000/session/token";
+const AUTH_ENDPOINT = "http://127.0.0.1:8000/extension/token";
 
 // GetAccessToken
 const getAccessToken = async () => {
