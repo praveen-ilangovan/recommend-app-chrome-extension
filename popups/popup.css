@@ -180,3 +180,21 @@ img{
   font-size: 12px;
   font-weight: 600;
 }
+
+.msgBox {
+  border-radius:10px;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 80px 0px;
+}
+
+.successMsg {
+  border:solid 2px green;
+  color: green;
+}
+
+.errorMsg {
+  border:solid 2px maroon;
+  color: maroon;
+}

@@ -14,7 +14,7 @@ export const getVerifiedUser = async () => {
     // See if there is an access token
     const userDataFromStorage = await getUserDataFromStorage();
     if (userDataFromStorage === undefined) {
-        return verifiedUser;
+        return {'type':'error', 'msg': 'Please sign in'}
     }
 
     // Call the endpoint of the app.
@@ -29,17 +29,15 @@ export const getVerifiedUser = async () => {
         if (response.ok) {
             verifiedUser = await response.json();
             chrome.storage.sync.set({recommendAppUserData: verifiedUser.user});
-            return verifiedUser;
+            return {'type':'ok', 'msg': 'User authorized', 'user': verifiedUser};
         } else {
             // Handle error
             const errorData = await response.json();
-            console.error("Error:", errorData.detail.error);
             logout();
-            return verifiedUser;
+            return {'type':'error', 'msg': errorData.detail.error};
         }
         } catch (error) {
-            console.error("Error:", error);
-            return verifiedUser;
+            return {'type':'error', 'msg': error};
         }
 }
 
@@ -65,17 +63,14 @@ export const login = async (username, password) => {
         const data = await response.json();
         // Set the access token!!
         chrome.storage.sync.set({recommendAppUserData: data});
-        return true;
-
+        return {'type':'ok', 'msg': 'User logged in'};
       } else {
         // Handle error
         const errorData = await response.json();
-        console.error("Error:", errorData.detail.error);
-        alert(`Error: ${errorData.detail.error}`);
+        return {'type':'error', 'msg': errorData.detail.error};
       }
     } catch (error) {
-        console.error("Error:", error);
-        alert(error);
+        return {'type':'error', 'msg': error};
     }
 }
 
@@ -90,14 +85,15 @@ export const addCard = async (title, description, board_id) => {
     // See if there is an access token
     const userDataFromStorage = await getUserDataFromStorage();
     if (userDataFromStorage === undefined) {
-        return {'error': 'Please sign in'};
+        return {'type':'error', 'msg': 'Please sign in'};
     }
 
     // Get the card info
     const sessionObj = await chrome.storage.session.get(["card"]);
     if (sessionObj.card === undefined) {
-        return {'error': 'Failed to fetch the card data'};
+        return {'type':'error', 'msg': 'Please sign inFailed to fetch the card data'};
     }
+
     const payload = {'title': title,
                      'description': description,
                      'url': sessionObj.card.url,
@@ -117,13 +113,13 @@ export const addCard = async (title, description, board_id) => {
   
         if (response.ok) {
             const data = await response.json();
-            return {'card': data}
+            return {'type':'ok', 'msg': 'Card added successfully', 'card': data}
         } else {
           // Handle error
           const errorData = await response.json();
-          return {'error': errorData.detail.error};
+          return {'type':'error', 'msg': errorData.detail.error}
         }
       } catch (error) {
-        return {'error': error};
+        return {'type':'error', 'msg': error}
       }
 }

@@ -60,9 +60,17 @@
         </div>
     </section>
 
-    <section id="errorSection" style="display: none;">
-        <div class="error-message">
-            <span class="error-text" id="errorMessage"></span>
+    <section id="infoSection">
+        <div class="msgBox successMsg" id="successMsgBox" style="text-align: center; display: none">
+            <h3>Success!</h3>
+            <p id="successMsgSlot">Card added to the board.</p>
+        </div>
+        <div class="msgBox errorMsg" id="errorMsgBox" style="text-align: center; display: none">
+            <h3>Error!</h3>
+            <p id="errorMsgSlot">Card already exists in the board.</p>
+        </div>
+        <div id="goBackBox" style="text-align: center; display: none">
+            <a id='goBackLink' href="">Go back</a>
         </div>
     </section>
 
