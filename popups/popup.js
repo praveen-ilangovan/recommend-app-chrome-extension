@@ -1,4 +1,4 @@
-import { getVerifiedUser, login, logout } from "../app/auth.js";
+import { getVerifiedUser, login, logout, addCard } from "../app/auth.js";
 
 document.addEventListener("DOMContentLoaded", async function() {
 
@@ -23,7 +23,16 @@ document.addEventListener("DOMContentLoaded", async function() {
         showLoginSection();
     });
 
-    // Display the contents
+    const addCardButton = document.getElementById("addCardButton");
+    addCardButton.addEventListener('click', async () => {
+        const title = document.getElementById("titleField").value;
+        const description = document.getElementById("descriptionField").value;
+        const boardId = document.getElementById("boardsDropDown").value;
+        const response = await addCard(title, description, boardId);
+        console.log(response);
+    })
+
+    // Start Up
     const verifiedUser = await getVerifiedUser();
     if (verifiedUser) {
         showCardSection(verifiedUser);
@@ -46,7 +55,7 @@ const showCardSection = (verifiedUser) => {
     
     document.getElementById("cardSection").style.display = 'block';
     document.getElementById("userGreeting").style.display = 'block';
-    document.getElementById("userGreeting").innerText = 'Hi, ' + verifiedUser.name;
+    document.getElementById("userGreeting").innerText = 'Hi, ' + verifiedUser.user.first_name;
 
     populateUrlInfo();
     populateBoards(verifiedUser.boards);
@@ -66,12 +75,7 @@ const populateUrlInfo = () => {
 
             if (response) {
                 // Store the url in the session data
-                chrome.storage.session.set({
-                    cardThumbnail: response.data.thumbnail,
-                    cardURL: response.data.url,
-                    cardTitle: response.data.title,
-                    cardDescription: response.data.description
-                 });
+                chrome.storage.session.set({card: response.data});
 
                 const titleField = document.getElementById("titleField");
                 titleField.value = response.data.title;
