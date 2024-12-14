@@ -91,7 +91,7 @@ export const addCard = async (title, description, board_id) => {
     // Get the card info
     const sessionObj = await chrome.storage.session.get(["card"]);
     if (sessionObj.card === undefined) {
-        return {'type':'error', 'msg': 'Please sign inFailed to fetch the card data'};
+        return {'type':'error', 'msg': 'Failed to fetch the card data'};
     }
 
     const payload = {'title': title,

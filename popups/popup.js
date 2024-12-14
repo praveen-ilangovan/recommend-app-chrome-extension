@@ -83,6 +83,9 @@ const populateUrlInfo = () => {
     chrome.tabs.query({active: true, currentWindow: true}, tabs => {
 
         // [TODO] Skip if the url is chrome specific ones
+        if (tabs[0].url.startsWith("chrome://")) {
+            return;
+        }
 
         // Send a message to the active tab
         chrome.tabs.sendMessage(tabs[0].id, {data: "hello"}, response => {
