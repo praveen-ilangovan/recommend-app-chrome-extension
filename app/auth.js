@@ -1,6 +1,7 @@
 
 // Constants
-const BASE_URL = "http://127.0.0.1:8000/";
+// const BASE_URL = "http://127.0.0.1:8000/";
+const BASE_URL = "https://recommend-app.onrender.com/"
 const SESSION_ENDPOINT = BASE_URL + "session/";
 const ME_ENDPOINT = BASE_URL + "me/";
 
@@ -18,6 +19,8 @@ export const getVerifiedUser = async () => {
   if (userDataFromStorage === undefined) {
       return {'type':'error', 'msg': 'Please sign in'}
   }
+
+  console.log(userDataFromStorage);
 
   // Call the endpoint of the app.
   try {
